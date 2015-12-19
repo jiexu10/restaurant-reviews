@@ -1,0 +1,22 @@
+Restaurant Show Page
+<br>
+Name: <%= @restaurant.name %>
+<br>
+Address: <%= @restaurant.full_address %>
+Description: <%= @restaurant.description %>
+Categories: <%= @restaurant.show_categories %>
+
+<%= link_to 'Add a Review', new_restaurant_review_path(@restaurant) %>
+
+<% if @reviews.any? %>
+Reviews:
+<ul>
+<% @reviews.each do |review| %>
+<li>
+  Rating: <%= review.rating %>
+  Body: <%= review.body %>
+  Posted On: <%= review.parse_create_date %>
+</li>
+<% end %>
+</ul>
+<% end %>

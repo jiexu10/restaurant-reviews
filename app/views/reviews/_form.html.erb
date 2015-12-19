@@ -1,0 +1,21 @@
+<%= form_for [@restaurant, @review] do |f| %>
+
+  <% if @review.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved:</h2>
+
+      <%= @review.errors.full_messages.join('. ') %>
+      <ul>
+    </div>
+  <% end %>
+
+    <%= f.label :rating %>
+    <%= f.text_field :rating %>
+    <%= f.label :body, 'Review' %>
+    <%= f.text_field :body %>
+
+  <div class="actions">
+    <%= f.submit 'Add Review', class: 'button tiny'%>
+  </div>
+
+<% end %>

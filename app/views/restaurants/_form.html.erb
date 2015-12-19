@@ -1,0 +1,35 @@
+<%= form_for(@restaurant) do |f| %>
+
+  <% if @restaurant.errors.any? %>
+    <div class="error_explanation">
+      <h2><%= pluralize(@restaurant.errors.count, "error") %> prohibited this restaurant from being saved:</h2>
+
+      <%= @restaurant.errors.full_messages.join('. ') %>
+    </div>
+  <% end %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.label :address %>
+  <%= f.text_field :address %>
+  <%= f.label :city %>
+  <%= f.text_field :city %>
+  <%= f.label :state %>
+  <%= f.text_field :state %>
+  <%= f.label :zip %>
+  <%= f.text_field :zip %>
+  <%= f.label :description %>
+  <%= f.text_field :description %>
+
+<% unless @category_collection.nil? %>
+  <div>
+    <%= f.label :categories %>
+    <%= f.collection_check_boxes(:category_ids, @category_collection, :id, :name) %>
+  </div>
+<% end %>
+
+  <div class="actions">
+    <%= f.submit 'Add Restaurant', class: 'button tiny'%>
+  </div>
+
+<% end %>
